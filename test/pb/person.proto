@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package proto;
+
+option go_package = "/";
+
+// protoc --go_out=. *.proto
+
+message Person {
+    string name = 1;
+    int32 age = 2;
+    repeated string emails = 3;  // repeated 表示可以重复，理解为切片
+    repeated Phone phones = 4;
+}
+
+enum PhoneType {
+    MOBILE = 0;
+    HOME = 1;
+    WORD = 2;
+}
+
+message Phone {
+    string number = 1;
+    PhoneType type = 2;
+}
