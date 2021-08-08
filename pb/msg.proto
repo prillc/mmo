@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+package pb;
+
+option go_package = "/";
+option csharp_namespace = "Pb";   //给C#提供的选项
+
+
+// 同步玩家数据，玩家上线了
+message SyncPid {
+  int32 Pid = 1;
+}
+
+
+// 聊天
+message Talk {
+  string Content = 1;
+}
+
+// 玩家位置信息
+message Position {
+  float X = 1;
+  float Y = 2;
+  float Z = 3;
+  float V = 4;
+}
+
+
+// 服务器广播
+message Broadcast {
+  int32 Pid = 1;
+  int32 Tp = 2;
+  BroadcastType type = 3;  // 0聊天 1玩家坐标
+  oneof Data {
+      // 聊天数据
+      string Content = 4;
+      // 位置数据
+      Position position = 5;
+  }
+}
+
+// 广播的类型
+enum BroadcastType {
+  // 聊天
+  TALK = 0;
+  // 玩家坐标
+  POSITION = 1;
+}

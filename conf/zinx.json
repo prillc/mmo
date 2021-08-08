@@ -1,0 +1,7 @@
+{
+    "Name": "MMO Server",
+    "Host": "0.0.0.0",
+    "TcpPort": 3636,
+    "MaxConn": 3000,
+    "WorkerPoolSize": 2
+}
